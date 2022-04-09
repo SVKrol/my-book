@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./styles.css";
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
+import MenuIcon from "@mui/icons-material/Menu";
+import { UserContext } from "../../context/userContext";
+import { Link } from "react-router-dom";
 
-export const Header = ({user}) => {
+export const Header = () => {
+  const user = useContext(UserContext);
   return (
     <Box
       sx={{
@@ -29,13 +32,17 @@ export const Header = ({user}) => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} >
-            Posts
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            <Link className="link-to" to="/">Posts</Link>
           </Typography>
           <Button color="inherit">Login</Button>
           <div className="profile">
-              {user.email && <span>{user.email}</span>}
-              {user.name && <span>{user.name}: {user.about}</span>}
+            {user.email && <span>{user.email}</span>}
+            {user.name && (
+              <span>
+                {user.name}: {user.about}
+              </span>
+            )}
           </div>
         </Toolbar>
       </AppBar>

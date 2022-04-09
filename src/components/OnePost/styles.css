@@ -30,7 +30,7 @@
 }
 
 .title b {
-    color: rgb(227, 167, 249);
+    color: rgb(0, 89, 255);
 }
 
 .user_info {
@@ -75,11 +75,13 @@
 }
 
 .card_like_active {
-	fill: #000000;
+	fill: #c40303;
 }
 
 .buttons {
     display: flex;
     flex-direction: column;
+    align-content: center;
+    justify-content: center;
     gap: 5px;
 }

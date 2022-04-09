@@ -3,12 +3,18 @@ import s from "./styles.module.css";
 
 import { Post } from "../Post";
 
-export const PostList = ({posts, handlePostLike, user, handleDeletePost}) => {
-
+export const PostList = ({ posts, handlePostLike, handleDeletePost }) => {
   return (
-    <div className={s.cards}>
-      {posts.map(({...postItem}) => {
-        return <Post key={postItem._id} {...postItem} onPostLike={handlePostLike} user={user} onDeletePost={handleDeletePost}/>;
+    <div className={s.posts}>
+      {posts.map(({ ...postItem }) => {
+        return (
+          <Post
+            key={postItem._id}
+            {...postItem}
+            onPostLike={handlePostLike}
+            onDeletePost={handleDeletePost}
+          />
+        );
       })}
     </div>
   );

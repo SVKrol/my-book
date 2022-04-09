@@ -2,7 +2,6 @@ import React from "react";
 import { AppBar, Box } from '@mui/material';
 import "./styles.css";
 
- // #e040fb (alternative method)
 
 export const Footer = () => {
   return (
@@ -24,7 +23,7 @@ export const Footer = () => {
           height: "25px",
         }}
       >
-        <a>© Good luck </a>
+        <a>© Good luck!</a>
       </AppBar>
     </Box>
   );

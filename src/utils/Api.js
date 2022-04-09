@@ -51,6 +51,28 @@ class Api {
             },
         }).then(onResponse)
     }
+
+    addPost(newPost){
+        return fetch(`${this._baseUrl}/posts`, {
+            method: "POST",
+            body: JSON.stringify(newPost),
+            headers: {
+                authorization: this._token,
+                "Content-type": "application/json",
+            },
+        }).then(onResponse)
+    }
+
+    updatePost(newPost, postID){
+        return fetch(`${this._baseUrl}/posts/${postID}`, {
+            method: "PUT",
+            body: JSON.stringify(newPost),
+            headers: {
+                authorization: this._token,
+                "Content-type": "application/json",
+            },
+        }).then(onResponse)
+    }
 }
 
 const config = {
