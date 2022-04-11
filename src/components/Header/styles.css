@@ -4,8 +4,9 @@
     font-size: 15px;
     font-weight: 600;
     align-items: flex-end;
+    color: rgb(240, 245, 247)
 }
 
 .link-to {
-    color: #ffff;
+    color: rgb(240, 245, 247);
 }

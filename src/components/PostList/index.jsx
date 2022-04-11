@@ -3,7 +3,7 @@ import s from "./styles.module.css";
 
 import { Post } from "../Post";
 
-export const PostList = ({ posts, handlePostLike, handleDeletePost }) => {
+export const PostList = ({ posts, handlePostLike, handleDeletePost, setPosts }) => {
   return (
     <div className={s.posts}>
       {posts.map(({ ...postItem }) => {
@@ -13,6 +13,7 @@ export const PostList = ({ posts, handlePostLike, handleDeletePost }) => {
             {...postItem}
             onPostLike={handlePostLike}
             onDeletePost={handleDeletePost}
+            setPosts={setPosts}
           />
         );
       })}

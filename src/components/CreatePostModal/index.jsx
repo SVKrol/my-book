@@ -30,8 +30,17 @@ export default function CreateModal({ setPosts }) {
     mode: "onBlur",
   });
 
+
   function onSubmit(newPost) {
-    api.addPost(newPost).then(() => {
+    const newTags = newPost.tags.split(",");
+    const upNewPost = {
+      title: newPost.title ? newPost.title : "Название поста",
+      image: newPost.image ? newPost.image : 'https://react-learning.ru/image-compressed/default-image.jpg',
+      text: newPost.text ? newPost.text : "Текст поста",
+      tags: newPost.tags ? newTags : [],
+    };
+
+    api.addPost(upNewPost).then(() => {
       api.getPostsList().then((newPosts) => {
         setPosts(newPosts);
       });
@@ -54,7 +63,7 @@ export default function CreateModal({ setPosts }) {
             <input
               type="text"
               {...register("title", {
-                required: "Заполнить обязательно*",
+                required: "Это поле обязательно*",
               })}
               placeholder="Название"
             />
@@ -68,19 +77,17 @@ export default function CreateModal({ setPosts }) {
               {...register("image")}
               placeholder="Ссылка на картинку"
             />
-            {<input 
+            <input 
                 type="text"
                 {...register('tags')}
                 placeholder="Теги"
-             />}
+             />
             <textarea
               type="text"
               {...register("text", {
-                pattern: {
-                  required: "Место для текста осталось пустым",
-                },
+                  required: "...не написали текст",
               })}
-              placeholder="Текст"
+              placeholder="Текст поста"
             />
             {errors?.text && (
               <p className={s.errorMessage}>{errors?.text?.message}</p>

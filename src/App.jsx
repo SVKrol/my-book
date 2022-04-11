@@ -10,6 +10,7 @@ import { NotFoundPage } from "./Pades/NotFoundPage/NotFoundPage";
 import { UserContext } from "./context/userContext";
 import { PostPage } from "./Pades/PostPage/PostPage";
 import Spinner from "./components/Spinner";
+import { PaginationOutlined } from "./components/Pagination"
 
 export const App = () => {
   const [currentUser, setCurrentUser] = useState({});
@@ -32,7 +33,6 @@ export const App = () => {
       const newPostLiked = posts.map((post) => {
         return post._id === newPost._id ? newPost : post;
       });
-
       setPosts(newPostLiked);
     });
   }
@@ -56,11 +56,15 @@ export const App = () => {
             element={
               isLoading
               ? <Spinner/>
-              : <AllPosts
+              : <>
+              <AllPosts
                 posts={posts}
                 handlePostLike={handlePostLike}
                 handleDeletePost={handleDeletePost}
+                setPosts={setPosts}
               />
+              <PaginationOutlined />
+              </>
             }
           />
           <Route
@@ -70,6 +74,7 @@ export const App = () => {
                 posts={posts}
                 handlePostLike={handlePostLike}
                 handleDeletePost={handleDeletePost}
+                setPosts={setPosts}
               />
             }
           />

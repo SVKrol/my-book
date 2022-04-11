@@ -1,6 +1,6 @@
 {
   "name": "my-book",
-  "version": "2",
+  "version": "3",
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
